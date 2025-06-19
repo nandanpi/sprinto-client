@@ -1,6 +1,8 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 import { Toaster } from "~/components/ui/sonner";
+import dotenv from "dotenv";
+dotenv.config();
 
 export type Todo = {
   title: string;
@@ -38,7 +40,7 @@ export default function TodoProvider({
 
   async function fetchTodos() {
     try {
-      const resp = await fetch("http://localhost:2468/todo", {
+      const resp = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/todo`, {
         method: "GET",
       });
       if (resp.ok) {
@@ -58,7 +60,7 @@ export default function TodoProvider({
   async function addTodo(todo: Todo) {
     try {
       setLoading(true);
-      await fetch("http://localhost:2468/todo", {
+      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +77,7 @@ export default function TodoProvider({
   async function deleteTodo(id: string) {
     try {
       setLoading(true);
-      await fetch(`http://localhost:2468/todo/${id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/todo/${id}`, {
         method: "DELETE",
       });
       await fetchTodos();
@@ -89,7 +91,7 @@ export default function TodoProvider({
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:2468/todo/${id}/toggleStatus`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/todo/${id}/toggleStatus`,
         {
           method: "PATCH",
         }
