@@ -44,7 +44,7 @@ export default function Home() {
         </a>
       </div>
 
-      <div className="flex flex-col gap-2 justify-center items-start mx-auto max-w-xl h-screen">
+      <div className="flex flex-col gap-2 justify-center items-start sm:mx-auto max-w-xl h-screen mx-4">
         {todos.map((todo) => (
           <div
             key={todo._id}
@@ -85,7 +85,7 @@ export default function Home() {
         ))}
       </div>
       <AddTodoDialog />
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 text-center text-sm text-gray-400">
+      <div className="fixed bottom-4 left-5 text-center text-sm text-gray-400">
         Used shadcn/ui for faster development • Server deployed on Render •
         Frontend deployed on Vercel
       </div>

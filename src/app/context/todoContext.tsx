@@ -110,7 +110,7 @@ export default function TodoProvider({
     <TodoContext.Provider
       value={{ todos, fetchTodos, addTodo, deleteTodo, markDone, loading }}
     >
-      <Toaster position="bottom-center" richColors />
+      <Toaster position="top-left" richColors />
       {children}
     </TodoContext.Provider>
   );
