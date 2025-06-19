@@ -114,7 +114,7 @@ export function AddTodoDialog() {
                   variant="outline"
                   className={cn(
                     "w-full justify-start text-left font-normal",
-                    !deadline && "text-muted-foreground",
+                    !deadline && "text-muted-foreground"
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
@@ -126,7 +126,7 @@ export function AddTodoDialog() {
                   mode="single"
                   selected={deadline}
                   onSelect={setDeadline}
-                  initialFocus
+                  disabled={(date) => date < new Date()}
                 />
               </PopoverContent>
             </Popover>

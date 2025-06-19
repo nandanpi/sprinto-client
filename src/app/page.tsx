@@ -28,7 +28,17 @@ export default function Home() {
             />
             <div className="w-full">
               <div className="flex w-full justify-between">
-                <h3 className="-translate-y-1">{todo.title}</h3>
+                <div>
+                  <h3 className="-translate-y-1">{todo.title}</h3>
+                  <div className="flex items-center gap-1 text-xs text-gray-400">
+                    {new Date(todo.deadline).toLocaleDateString("en-US", {
+                      weekday: "short",
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </div>
+                </div>
                 <div
                   onClick={async () => {
                     await deleteTodo(todo._id);
@@ -38,7 +48,7 @@ export default function Home() {
                 </div>
               </div>
               {todo.description && (
-                <p className="text-xs text-gray-400">{todo.description}</p>
+                <p className="text-xs text-gray-400 mt-1">{todo.description}</p>
               )}
             </div>
           </div>
